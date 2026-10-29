@@ -28,21 +28,27 @@
 
 ## 界面
 
-| 总览 | 情报雷达 |
+全部截图来自本机真实渲染（Edge 无头），未经修图。开发期全量截图（63 张，shot3–shot42）在 `ops/`。
+
+| 总览（今天该干什么） | 情报雷达 · 概览（kimi 已审 102 条 · 丢弃 39） |
 |---|---|
 | ![总览](docs/screenshots/01-overview.png) | ![情报雷达](docs/screenshots/02-radar.png) |
 
-| 固定工作流 | 审核队列（AI 分析 + 人工闸门） |
+| 固定工作流 · 七步（每步实时数字） | 情报雷达 · 商品样本（Amazon 按月销排序） |
 |---|---|
-| ![工作流](docs/screenshots/03-workflow.png) | ![审核结果](docs/screenshots/04-review-results.png) |
+| ![工作流](docs/screenshots/03-workflow.png) | ![商品样本](docs/screenshots/08-radar-products.png) |
 
-| 全链路视图 | 账号绑定 |
+| 审核队列（AI 预审 + 人工打回） | 发布结果（成功/失败归因） |
 |---|---|
-| ![链路](docs/screenshots/05-pipeline.png) | ![账号绑定](docs/screenshots/06-account-binding.png) |
+| ![审核队列](docs/screenshots/09-review.png) | ![发布结果](docs/screenshots/04-results.png) |
 
-| 设置 | 产品素材 |
+| 产品与素材（SKU / 卖点 / 参数） | 账号与平台绑定 |
 |---|---|
-| ![设置](docs/screenshots/07-settings.png) | ![产品素材](docs/screenshots/08-products.png) |
+| ![产品与素材](docs/screenshots/10-product-assets.png) | ![账号绑定](docs/screenshots/06-account-binding.png) |
+
+| 设置 · 模型映射 | 链路与调用关系（长图 1400×3200） |
+|---|---|
+| ![设置](docs/screenshots/07-settings.png) | ![链路](docs/screenshots/05-pipeline.png) |
 
 ## 快速开始
 
@@ -82,8 +88,8 @@ app\
   comfy.mjs     本地生图服务对接
 web\            单页界面（index.html + app.js + style.css，无构建）
 service\        启动/停止/看门狗脚本 + 本地生图小服务
-ops\            开发期的一次性脚本与自测（含 Postiz 契约桩、21 项断言）
-docs\           需求基线、决策记录、平台调研、缺口台账、截图
+ops\            开发期一次性脚本与自测（含 Postiz 契约桩）+ 63 张开发期截图
+docs\           需求基线、决策记录、平台调研、缺口台账、精选截图
 data\           运行数据（数据库 / 主密钥 / 浏览器 profile）—— 不进仓库
 ```
 
