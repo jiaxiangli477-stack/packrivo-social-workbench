@@ -1,0 +1,17 @@
+# 运行数据与本地密钥，不进仓库
+node_modules/
+data/
+deploy/data/
+tools/
+*.db
+*.db-wal
+*.db-shm
+master.key.dpapi
+*.log
+
+# 开发期截图原件（精选图已放 docs/screenshots/）
+ops/*.png
+
+# 本机缓存
+.cache/
+.tmp/
