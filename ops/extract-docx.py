@@ -1,5 +1,5 @@
 import sys, docx
-p = r"C:\Users\21996\Desktop\外贸社媒工作台 · 需求与准备清单.docx"
+p = r"C:\Users\<user>\Desktop\外贸社媒工作台 · 需求与准备清单.docx"
 d = docx.Document(p)
 out = []
 for para in d.paragraphs:

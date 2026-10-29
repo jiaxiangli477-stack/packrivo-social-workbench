@@ -16,3 +16,19 @@ ops/meta-*.png
 # 本机缓存
 .cache/
 .tmp/
+
+# Python 字节码（service/sd_server.py 运行后会生成）
+__pycache__/
+*.py[cod]
+
+# 环境变量与证书类密钥材料
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+
+# 数据库备份
+*.db.bak
+data.bak/

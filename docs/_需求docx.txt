@@ -12,7 +12,7 @@
 [Normal] 工作台要有一个“模型接入”设置页，文字、图片、视频模型都在这里配置，不用改代码。
 [Normal] 开发阶段的派工优先用免费的 CLI（Codex、Gemini），CLI 不可用时改走你的中转站接口。
 [Normal] CLI 也能走中转站： Codex CLI 等命令行工具本身支持自定义接口地址。会员额度用完或账号不可用时，可以切换到中转站继续用 GPT 等模型，派工流程不变。
-[Normal] 本机的中转站地址和 Key 统一填在 C:\Users\21996\.ai-keys\keys.env，Codex 和 PAL 共用。
+[Normal] 本机的中转站地址和 Key 统一填在 C:\Users\<user>\.ai-keys\keys.env，Codex 和 PAL 共用。
 [Heading 2] 数据看板
 [Normal] 看板回答一个问题：哪个平台、哪类内容，给独立站带来了最多访问和订单。分四个页面：
 [Normal] 核心指标定义：

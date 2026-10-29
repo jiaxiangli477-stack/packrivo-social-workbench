@@ -1,8 +1,8 @@
-# Packrivo 社媒自动发布工作台
+# Packrivo 社媒自动发布工作台 · 半成品（WIP）
 
 **Social Media Auto-Publish Workbench** · 本地单机版 v0.1
 
-> ## 🚧 状态：半成品（Work in Progress）
+> ## 🚧 状态：半成品（Work in Progress / WIP）
 >
 > 主链路已在本机跑通、有实测记录；**官方平台发布（Meta / TikTok / Pinterest / YouTube）与素材上传尚未接通**——缺的是账号资质、App 审核、一台跑起来的 Postiz 和几个外部 Key，不是代码骨架。
 >
@@ -61,12 +61,14 @@ node app\server.mjs
 
 打开 **http://127.0.0.1:8795**。端口冲突时：`$env:SWB_PORT=8796; node app\server.mjs`。
 
-可选依赖（`npm i`）：
+依赖（**必须先 `npm i`**）：
 
-| 包 | 用途 | 不装会怎样 |
+| 包 | 用途 | 不装的后果 |
 |---|---|---|
-| `playwright-core` | 浏览器通道（登录态抓取、页面自动化） | 浏览器类通道不可用，其它照跑 |
-| `sharp` | 缩略图裁剪/压缩 | 缩略图走原图，慢一点 |
+| `playwright-core` | 浏览器通道（Amazon / Alibaba 抓取、CDP 自动化） | `app/browser.mjs` 顶层静态 import，服务在加载阶段直接退出（`ERR_MODULE_NOT_FOUND`） |
+| `sharp` | 缩略图裁剪/压缩、Bluesky 配图缩放 | `app/channels.mjs` 顶层静态 import，服务在加载阶段直接退出（`ERR_MODULE_NOT_FOUND`） |
+
+两者都是模块顶层 `import`，不是按需加载；只装一个也会起不来（缺 `sharp` 最先报错，因为 `server.mjs` 先 import `channels.mjs`）。
 
 `tools\yt-dlp.exe`（17MB，Unlicense）用于 YouTube 精确播放量/时长采集，**未随仓库分发**，需要时自行放到 `tools\` 下。
 
@@ -80,7 +82,7 @@ app\
   llm.mjs       模型网关客户端（任务→模型映射，按优先级主备降级）
   channels.mjs  发布适配器（mock / webhook / postiz / 官方 API 占位）
   postiz.mjs    Postiz 公开 API v1 适配器（契约对齐）
-  queue.mjs     排期调度 + 令牌桶限速 + 退避重试 + 熔断冷却
+  queue.mjs     排期调度 + 最小间隔/日配额限速 + 3 次线性退避重试 + 失败后平台冷却
   radar.mjs     情报雷达：YouTube / Mastodon / Lemmy / Bluesky / News / 同行站点
   sources.mjs   数据源抓取与行业词过滤
   quality.mjs   内容质量规则（敏感项闸门、相似度、标签规范）
@@ -129,7 +131,9 @@ data\           运行数据（数据库 / 主密钥 / 浏览器 profile）—�
 | [docs/04-关键词找爆款.md](docs/04-关键词找爆款.md) | 关键词口径、打分方式、已排除的路子 |
 | [docs/05-开源项目复用清单.md](docs/05-开源项目复用清单.md) | 可复用项目、许可证风险 |
 | [docs/06-类目情报.md](docs/06-类目情报.md) | 20 个同行域名逐个核验 |
+| [docs/07-固定工作流.md](docs/07-固定工作流.md) | 七步固定工作流的节点定义 |
 | [docs/08-内容质量复核-20261026.md](docs/08-内容质量复核-20261026.md) | 内容质量逐条复核 |
+| [docs/09-项目链路.html](docs/09-项目链路.html) | 链路与调用关系图（截图见上） |
 | [docs/competitors.md](docs/competitors.md) | 竞品功能与差异化空档 |
 | [docs/research/](docs/research/) | 十个平台的接口 / 限流 / 风控调研 |
 
